@@ -1,13 +1,14 @@
 from PIL import Image
 import numpy as np
 
-# --- chaotic map functions (reuse the same ones as before) ---
+# logistic map
 def logistic_map(x0, r, length):
     x = [x0]
     for _ in range(length - 1):
         x.append(r * x[-1] * (1 - x[-1]))
     return np.array(x)
 
+# tent map
 def tent_map(x0, mu, length):
     x = [x0]
     for _ in range(length - 1):
@@ -17,12 +18,14 @@ def tent_map(x0, mu, length):
             x.append((1 - x[-1]) / (1 - mu))
     return np.array(x)
 
+# chebyshev map
 def chebyshev_map(x0, k, length):
     x = [x0]
     for _ in range(length - 1):
         x.append(np.cos(k * np.arccos(np.clip(x[-1], -1, 1))))
     return np.array(x)
 
+# Decrypt function
 def decrypt_image(encrypted_img_path,
                   logistic_params=(0.5, 3.99),
                   tent_params=(0.5, 0.7),
