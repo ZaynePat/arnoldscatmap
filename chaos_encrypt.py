@@ -97,6 +97,6 @@ def pdf_to_png_and_encrypt(pdf_path, out_dir="Encrypted_Images"):
         encrypted_files.append((enc_name, shape))
 
     return encrypted_files
-
+            #sample file you want to encrypt    #file name you want to save the encrypted images
 pdf_to_png_and_encrypt('example.pdf', out_dir="Encrypted_Images1")
 
