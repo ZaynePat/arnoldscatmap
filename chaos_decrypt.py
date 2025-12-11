@@ -47,9 +47,9 @@ def decrypt_image_color(encrypted_img_path,
         tent_seq = tent_map(*tent_params, length)
         cheb_seq = chebyshev_map(*cheb_params, length)
 # Step 3 & 4: Generate permutation and diffusion keys
-        mix_seq = log_seq + tent_seq + cheb_seq
-        perm_key = np.argsort(mix_seq)
-        diff_key = (mix_seq * 255) % 256
+        hybrid_seq = log_seq + tent_seq + cheb_seq
+        perm_key = np.argsort(hybrid_seq)
+        diff_key = (hybrid_seq * 255) % 256
         diff_key = diff_key.astype('uint8')
 
         permuted_pixels = np.bitwise_xor(enc_pixels, diff_key)
